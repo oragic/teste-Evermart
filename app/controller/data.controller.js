@@ -1,18 +1,11 @@
-const service = ""
+const GetDatasService = require('../../layers/services/getDatas.service');
 class GetDataController{
    async handle(req,res){
-        const data = {
-            name:"RAI", 
-            email:"EXEMPLE@EMAIL.COM", 
-            _id:"1", 
-            created_at:"2022/07/20", 
-            skills:"NODEJS", 
-            cpf:"111.111.111-15",
-            rg:"2324456"
-        }
-    
-        return res.send(data)
+
+        const getDatasService = new GetDatasService();
+        const toReturn = await getDatasService.execute();
+        return res.status(200).send({message:"succes",data:toReturn});
     }
 }
 
-module.exports = GetDataController
+module.exports = GetDataController;
