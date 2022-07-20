@@ -1,7 +1,10 @@
 const Router =  require('express')
-const getdata = require('../controller/data.controller')
+const GetDataController = require('../controller/data.controller')
 const routes =  Router();
 
-routes.get('/deal/events',getdata());
+const getDataController = new GetDataController();
 
-export default routes;
+
+routes.get('/getData',getDataController.handle);
+
+module.exports = routes;
